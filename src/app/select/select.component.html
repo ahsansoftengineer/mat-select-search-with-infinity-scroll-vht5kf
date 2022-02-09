@@ -1,0 +1,21 @@
+<mat-form-field>
+  <mat-select
+    msInfiniteScroll
+    (infiniteScroll)="getNextBatch()"
+    [formControl]="ctrl"
+    placeholder="Select Something"
+  >
+    <mat-option>
+      <ngx-mat-select-search
+        [formControl]="searchCtrl"
+        placeholderLabel="Search"
+        noEntriesFoundLabel="No entry matches"
+        [disableScrollToActiveOnOptionsChanged]="true"
+      >
+      </ngx-mat-select-search>
+    </mat-option>
+    <mat-option *ngFor="let option of options$ | async" [value]="option">
+      {{ option }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
